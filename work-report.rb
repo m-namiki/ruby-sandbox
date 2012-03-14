@@ -16,34 +16,42 @@ BASE_DIR = "D:/m-namiki/00_シャンテリー/01_管理/週報/"
 # 週報ファイル名のキー
 WORK_REPORT_KEY = "週報"
 
-p "***** Start *****"
-
 # ダウンロードディレクトリのファイルからファイル名に「週報」の文字列が
 # 含まれるファイルを週報ディレクトリに移動します。
-Dir.glob(DOWNLOAD_DIR + "*").each do |file|
-  file_name = File::basename(file)
-  if file_name.include?(WORK_REPORT_KEY) then
-    File.rename(file, BASE_DIR + file_name)
+def move_download_to_basedir
+  Dir.glob(DOWNLOAD_DIR + "*").each do |file|
+    file_name = File::basename(file)
+    if file_name.include?(WORK_REPORT_KEY) then
+      File.rename(file, BASE_DIR + file_name)
+    end
   end
 end
 
 # 週報ディレクトリにあるファイルを個人別ディレクトリに移動します。
-Dir.glob(BASE_DIR + "*").each do |file|
-  if !FileTest.directory?(file) then
-    file_name = File::basename(file)
-    names = file_name.split("_")
-    dir_name = BASE_DIR + names[0] + "_" + names[4].delete(".xls")
-    if !FileTest.exist?(dir_name) then
-      Dir::mkdir(dir_name)
-      p "Created " + dir_name
+def move_basedir_to_personal
+  Dir.glob(BASE_DIR + "*").each do |file|
+    if !FileTest.directory?(file) then
+      file_name = File::basename(file)
+      names = file_name.split("_")
+      dir_name = BASE_DIR + names[0] + "_" + names[4].delete(".xls")
+      if !FileTest.exist?(dir_name) then
+        Dir::mkdir(dir_name)
+        p "Created " + dir_name
+      end
+      File.rename(file, dir_name + "/" + file_name)
+      p "Moved " + File::basename(file) + " to " + dir_name
+    else
+      next
     end
-
-    File.rename(file, dir_name + "/" + file_name)
-    p "Moved " + File::basename(file) + " to " + dir_name
-  else
-    next
   end
 end
+
+
+
+p "***** Start *****"
+
+move_download_to_basedir()
+move_basedir_to_personal()
 
 p "***** Finish *****"
 
