@@ -11,12 +11,11 @@ BASE_DIR = "C:/tmp/"
 TARGET_FILE = BASE_DIR + "test.txt"
 
 line_array = File.read(TARGET_FILE).split("\n")
-line_array.sort
+sorted_line = line_array.sort
 File.delete(TARGET_FILE)
 
 File.open(TARGET_FILE, "w") {|f|
-  line_array.each {|line|
-    p line
+  sorted_line.each {|line|
     f.write line + "\n"
   }
 }
