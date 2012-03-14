@@ -1,1 +1,17 @@
 Rubyの学習プログラムです。
+
+dupplicate-delete.rb
+	ファイルの重複行を削除します。
+
+hello.rb
+	Hello, world
+
+sort.rb
+	ファイルの内容をソートします。
+
+work-report.rb
+	週報ファイルを個人別フォルダへ移動します。
+
+
+
+
