@@ -4,7 +4,7 @@
     画像IDを抽出して、ファイルに出力する。
 =end
 
-TARGET_DIR = "C:/temp/photo"
+TARGET_DIR = "C:/temp/photo/20E1"
 
 DIST_FILE = TARGET_DIR + '/' + "image_id.txt"
 

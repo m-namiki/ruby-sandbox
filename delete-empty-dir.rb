@@ -5,7 +5,7 @@
   空でない場合はなにもしない。
 =end
 
-BASE_DIR = "C:/temp/photo"
+BASE_DIR = "C:/temp/photo/20E1"
 
 # 対象外のディレクトリを削除します。
 def delete_untarget_dirs

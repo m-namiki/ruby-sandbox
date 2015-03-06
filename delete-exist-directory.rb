@@ -4,9 +4,9 @@ require "FileUtils"
   指定されたファイルに画像IDが記載されている場合、ディレクトリを削除します。
 =end
 
-TARGET_DIR = "C:/temp/photo_20140909"
+TARGET_DIR = "C:/temp/photo/20E1"
 
-SRC_FILE = "C:/temp/already_registed.txt"
+SRC_FILE = "C:/temp/photo/20E1_already_registed.txt"
 
 # 存在している画像IDの読み込み
 exist_imageids = File.read(SRC_FILE).split("\n")
